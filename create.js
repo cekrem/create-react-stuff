@@ -46,7 +46,7 @@ const create = {
 const main = () => {
     if (!name || !create[type]) {
         console.error(chalk.red('Error in passed arguments! ' + JSON.stringify(process.argv.slice(2))));
-        console.log('Usage: yarn new [component|container] name subDir/subSubDir');
+        console.log('Usage: yarn create-react-stuff [component|container] name subDir/subSubDir');
         process.exit(1);
     }
     create[type]();
