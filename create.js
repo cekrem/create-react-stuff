@@ -3,6 +3,8 @@
 const chalk = require('chalk');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
+const MODULE_PATH = require('path').dirname(fs.realpathSync(__filename));
+
 const [type, name, subDir = false] = process.argv.slice(2);
 
 const getTemplate = (type, name, template = 'template.js') => {
@@ -10,12 +12,10 @@ const getTemplate = (type, name, template = 'template.js') => {
     try {
         return fs.readFileSync(templateSrc, 'utf-8').replace(/REPLACE/g, name);
     } catch (_) {
-        console.error(chalk.yellow('Warning: could not read template!'));
-        console.log(`Template for ${type} should be present in ` + chalk.blue.underline.bold(templateSrc));
-        console.log('Using default...');
-        return fs
-            .readFileSync(templateSrc.replace('./', './node_modules/create-react-stuff/'), 'utf-8')
-            .replace(/REPLACE/g, name);
+        console.error(chalk.yellow('Found no custom template!'));
+        console.log(`Custom template for ${type} can be placed in ` + chalk.blue.underline.bold(templateSrc));
+        console.log('Using default template!');
+        return fs.readFileSync(templateSrc.replace('./', MODULE_PATH + '/'), 'utf-8').replace(/REPLACE/g, name);
     }
 };
 
