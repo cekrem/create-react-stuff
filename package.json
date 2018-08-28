@@ -1,5 +1,5 @@
 {
-  "name": "create-react-stuff",
+  "name": "create-react",
   "version": "0.2.0",
   "description": "Highly opinionated code generator for React components and containers",
   "repository": "https://github.com/cekrem/create-react-stuff",
