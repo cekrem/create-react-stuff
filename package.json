@@ -1,6 +1,6 @@
 {
   "name": "create-react-stuff",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "Highly opinionated code generator for React components and containers",
   "repository": "https://github.com/cekrem/create-react-stuff",
   "author": "Christian Ekrem",

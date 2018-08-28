@@ -10,9 +10,12 @@ const getTemplate = (type, name, template = 'template.js') => {
     try {
         return fs.readFileSync(templateSrc, 'utf-8').replace(/REPLACE/g, name);
     } catch (_) {
-        console.error(chalk.red('Error reading template!'));
+        console.error(chalk.yellow('Warning: could not read template!'));
         console.log(`Template for ${type} should be present in ` + chalk.blue.underline.bold(templateSrc));
-        process.exit(1);
+        console.log('Using default...');
+        return fs
+            .readFileSync(templateSrc.replace('./', './node_modules/create-react-stuff/'), 'utf-8')
+            .replace(/REPLACE/g, name);
     }
 };
 
